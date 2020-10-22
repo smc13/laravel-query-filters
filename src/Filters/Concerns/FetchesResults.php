@@ -60,12 +60,12 @@ trait FetchesResults
     protected function getCachableResults(string $method, array $args = [])
     {
         if (!$this->shouldCache) {
-            return call_user_func_array([$this->builder, $method], $args);
+            return call_user_func_array([$this->query, $method], $args);
         }
 
         $class = class_basename(static::class);
-        Cache::tags(['query-filter', $class])->remember($this->getCacheKey($class, $method), $this->ttl, function () use ($method, $args) {
-            return call_user_func_array([$this->builder, $method], $args);
+        return Cache::tags(['query-filter', $class])->remember($this->getCacheKey($class, $method), $this->ttl, function () use ($method, $args) {
+            return call_user_func_array([$this->query, $method], $args);
         });
     }
 
