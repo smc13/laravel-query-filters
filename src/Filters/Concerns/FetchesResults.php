@@ -27,17 +27,17 @@ trait FetchesResults
         return $this;
     }
 
-    public function get(...$args = [])
+    public function get(...$args)
     {
         return $this->getCachableResults('get', $args);
     }
 
-    public function paginate(...$args = [])
+    public function paginate(...$args)
     {
         return $this->getCachableResults('paginate', $args);
     }
 
-    public function smartPaginate($perPage = null, ...$args = [])
+    public function smartPaginate($perPage = null, ...$args)
     {
         $requestedPerPage = $this->request->input('per_page');
         if (in_array($requestedPerPage, $this->perPageOptions)) {

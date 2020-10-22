@@ -3,7 +3,6 @@
 namespace SMCassar\LaravelQueryFilters\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -19,10 +18,10 @@ class BaseQueryFilter
 
     protected Collection $requestData;
 
-    protected Collection $defaults;
-
     /* The model to use for the base query */
-    protected static Model $model;
+    protected static string $model;
+
+    protected array $defaults = [];
 
     protected array $skipFilters = [];
 
@@ -34,17 +33,17 @@ class BaseQueryFilter
      * @return static
      * @throws Throwable
      */
-    protected static function newQuery(array $defaults = [], array $skip = [])
+    public static function newQuery()
     {
         throw_if(is_null(static::$model), MissingModelException::class);
 
-        $query = call_user_func_array([static::$model, 'query'], []);
-        return static::fromQuery($query, $defaults, $skip);
+        $query = call_user_func([static::$model, 'query']);
+        return resolve(static::class, ['query' => $query]);
     }
 
-    protected static function fromQuery(Builder $query, array $defaults = [], array $skip = [])
+    public static function fromQuery(Builder $query)
     {
-        return resolve(static::class, [$query])->apply($defaults, $skip);
+        return resolve(static::class, [$query]);
     }
 
     public function __construct(Builder $query = null, Request $request)
