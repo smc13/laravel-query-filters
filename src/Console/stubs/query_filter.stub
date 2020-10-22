@@ -2,13 +2,13 @@
 
 namespace DummyNamespace;
 
-use SMCassar\LaravelQueryFilters\Filters\BaseQueryFilter;
-use SMCassar\LaravelQueryFilters\Filters\Concerns\FetchesResults;
+use Smcassar\LaravelQueryFilters\Filters\BaseQueryFilter;
+use Smcassar\LaravelQueryFilters\Filters\Concerns\FetchesResults;
 
 class DummyClass extends BaseQueryFilter
 {
     use FetchesResults;
 
     /* The model to use for the base query */
-    protected static Model $model;
+    protected static string $model;
 }

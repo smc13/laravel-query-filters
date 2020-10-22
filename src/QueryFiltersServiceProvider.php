@@ -1,9 +1,9 @@
 <?php
 
-namespace SMCassar\LaravelQueryFilters;
+namespace Smcassar\LaravelQueryFilters;
 
 use Illuminate\Support\ServiceProvider;
-use SMCassar\LaravelQueryFilters\Console\MakeFilterCommand;
+use Smcassar\LaravelQueryFilters\Console\MakeFilterCommand;
 
 class QueryFiltersServiceProvider extends ServiceProvider
 {

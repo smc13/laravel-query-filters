@@ -1,6 +1,6 @@
 <?php
 
-namespace SMCassar\LaravelQueryFilters\Console;
+namespace Smcassar\LaravelQueryFilters\Console;
 
 use Illuminate\Console\GeneratorCommand;
 

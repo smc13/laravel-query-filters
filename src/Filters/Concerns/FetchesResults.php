@@ -1,6 +1,6 @@
 <?php
 
-namespace SMCassar\LaravelQueryFilters\Filters\Concerns;
+namespace Smcassar\LaravelQueryFilters\Filters\Concerns;
 
 use Illuminate\Support\Facades\Cache;
 

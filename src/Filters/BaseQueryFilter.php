@@ -1,13 +1,13 @@
 <?php
 
-namespace SMCassar\LaravelQueryFilters\Filters;
+namespace Smcassar\LaravelQueryFilters\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\ForwardsCalls;
-use SMCassar\LaravelQueryFilters\Exceptions\MissingModelException;
+use Smcassar\LaravelQueryFilters\Exceptions\MissingModelException;
 use Throwable;
 
 class BaseQueryFilter

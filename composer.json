@@ -1,5 +1,5 @@
 {
-    "name": "smcassar/laravel-query-filters",
+    "name": "Smcassar/laravel-query-filters",
     "description": "Smart query filters for Laravel",
     "require": {
         "php": "^7.4",
@@ -14,13 +14,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "SMCassar\\LaravelQueryFilters\\": "src"
+            "Smcassar\\LaravelQueryFilters\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "SMCassar\\LaravelQueryFilters\\QueryFiltersServiceProvider"
+                "Smcassar\\LaravelQueryFilters\\QueryFiltersServiceProvider"
             ]
         }
     }

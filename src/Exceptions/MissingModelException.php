@@ -1,6 +1,6 @@
 <?php
 
-namespace SMCassar\LaravelQueryFilters\Exceptions;
+namespace Smcassar\LaravelQueryFilters\Exceptions;
 
 use Exception;
 
