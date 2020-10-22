@@ -37,6 +37,16 @@ trait FetchesResults
         return $this->getCachableResults('paginate', $args);
     }
 
+    public function find(...$args)
+    {
+        return $this->getCachableResults('find', $args);
+    }
+
+    public function first(...$args)
+    {
+        return $this->getCachableResults('first', $args);
+    }
+
     public function smartPaginate($perPage = null, ...$args)
     {
         $requestedPerPage = $this->request->input('per_page');
