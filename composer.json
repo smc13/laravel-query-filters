@@ -1,11 +1,12 @@
 {
-  "name": "smcassar/laravel-query-filters",
-  "description": "Smart query filters for Laravel",
-  "require": {
-  },
-  "extra": {
-    "laravel": {
-      
+    "name": "smcassar/laravel-query-filters",
+    "description": "Smart query filters for Laravel",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SMCassar\\LaravelQueryFilters\\QueryFiltersServiceProvider"
+            ]
+        }
     }
-  }
 }
