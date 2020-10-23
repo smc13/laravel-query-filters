@@ -10,5 +10,5 @@ class DummyClass extends BaseQueryFilter
     use FetchesResults;
 
     /* The model to use for the base query */
-    protected static string $model;
+    protected static ?string $model = null;
 }

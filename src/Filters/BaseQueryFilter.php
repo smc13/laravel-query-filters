@@ -217,7 +217,7 @@ class BaseQueryFilter
             ->map(function ($sort) {
                 $parts = explode('|', $sort, 2);
                 if ($parts[0] ?? false) {
-                    return ['column' => $parts[0], 'desc' => strtolower($parts[2] ?? '') === 'desc'];
+                    return ['column' => $parts[0], 'desc' => strtolower($parts[1] ?? '') === 'desc'];
                 }
 
                 return false;
