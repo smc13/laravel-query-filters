@@ -19,7 +19,7 @@ class BaseQueryFilter
     protected Collection $requestData;
 
     /* The model to use for the base query */
-    protected static string $model;
+    protected static ?string $model = null;
 
     protected array $defaults = [];
 
