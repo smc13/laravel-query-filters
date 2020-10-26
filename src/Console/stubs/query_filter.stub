@@ -1,14 +1,15 @@
 <?php
 
-namespace DummyNamespace;
+namespace {{ filterNamespace }};
 
 use Smcassar\LaravelQueryFilters\Filters\BaseQueryFilter;
 use Smcassar\LaravelQueryFilters\Filters\Concerns\FetchesResults;
+use {{ namespacedModel }};
 
 class DummyClass extends BaseQueryFilter
 {
     use FetchesResults;
 
     /* The model to use for the base query */
-    protected static ?string $model = null;
+    protected static ?string $model = {{ model }}::class;
 }
