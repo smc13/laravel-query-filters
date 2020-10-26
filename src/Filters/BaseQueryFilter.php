@@ -38,7 +38,7 @@ class BaseQueryFilter
         throw_if(is_null(static::$model), MissingModelException::class);
 
         $query = call_user_func([static::$model, 'query']);
-        return resolve(static::class, ['query' => $query]);
+        return resolve(static::class, ['query' => $query])->apply();
     }
 
     public static function fromQuery(Builder $query)
