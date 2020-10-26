@@ -1,5 +1,5 @@
 {
-    "name": "Smcassar/laravel-query-filters",
+    "name": "smcassar/laravel-query-filters",
     "description": "Smart query filters for Laravel",
     "require": {
         "php": "^7.4",

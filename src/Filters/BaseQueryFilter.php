@@ -153,6 +153,9 @@ class BaseQueryFilter
             case 'sort':
             case 'order':
                 return 'sort';
+            case 'with':
+            case 'include':
+                return 'with';
             default:
                 return sprintf('filter%s', Str::studly(str_replace('.', ' ', $name)));
         }
@@ -226,5 +229,27 @@ class BaseQueryFilter
             ->toArray();
 
         return $this->applyArraySort($items);
+    }
+
+    /**
+     * Add a list of relationships to eager load with the query
+     * @param string|array $value
+     * @return void
+     */
+    protected function with($value)
+    {
+        if (!is_array($value)) {
+            $value = explode(',', $value);
+        }
+
+        foreach ($value as $relation) {
+            $sub = explode('.', $relation);
+            $main = array_shift($relation);
+
+            $method = sprintf('with%s', Str::studly($main));
+            if (method_exists($this, $method)) {
+                call_user_func_array([$this, $method], [$sub]);
+            }
+        }
     }
 }
