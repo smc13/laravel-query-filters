@@ -43,7 +43,7 @@ class BaseQueryFilter
 
     public static function fromQuery(Builder $query)
     {
-        return resolve(static::class, [$query]);
+        return resolve(static::class, ['query' => $query])->apply();
     }
 
     public function __construct(Builder $query = null, Request $request)
