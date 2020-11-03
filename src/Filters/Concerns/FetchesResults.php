@@ -49,7 +49,7 @@ trait FetchesResults
 
     public function smartPaginate($perPage = null, ...$args)
     {
-        $requestedPerPage = $this->request->input('per_page');
+        $requestedPerPage = $this->requestData['per_page'] ?? null;
         if (in_array($requestedPerPage, $this->perPageOptions)) {
             $perPage = $requestedPerPage;
         }
