@@ -8,11 +8,12 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Smcassar\LaravelQueryFilters\Exceptions\MissingModelException;
+use Smcassar\LaravelQueryFilters\Filters\Concerns\ParsesValues;
 use Throwable;
 
 class BaseQueryFilter
 {
-    use ForwardsCalls;
+    use ForwardsCalls, ParsesValues;
 
     protected Builder $query;
 
@@ -118,7 +119,7 @@ class BaseQueryFilter
         $this->getFilters()
             ->mapWithKeys(fn ($value, $filter) => [$this->resolveFilterMethod($filter) => $value])
             ->filter(fn ($val, $filter) => method_exists($this, $filter) && !in_array($filter, $this->skipFilters))
-            ->each(fn ($value, $filter) => call_user_func_array([$this, $filter], [$value]));
+            ->each(fn ($value, $filter) => $this->callFilter($filter, $value));
 
         return $this;
     }
@@ -159,6 +160,11 @@ class BaseQueryFilter
             default:
                 return sprintf('filter%s', Str::studly(str_replace('.', ' ', $name)));
         }
+    }
+
+    protected function callFilter(string $method, $value)
+    {
+        return call_user_func_array([$this, $method], [$value]);
     }
 
     protected function sort($value)
