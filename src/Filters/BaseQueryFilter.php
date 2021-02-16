@@ -154,9 +154,8 @@ class BaseQueryFilter
             case 'sort':
             case 'order':
                 return 'sort';
-            case 'with':
             case 'include':
-                return 'with';
+                return 'include';
             default:
                 return sprintf('filter%s', Str::studly(str_replace('.', ' ', $name)));
         }
@@ -242,7 +241,7 @@ class BaseQueryFilter
      * @param string|array $value
      * @return void
      */
-    protected function with($value)
+    protected function include($value)
     {
         if (!is_array($value)) {
             $value = explode(',', $value);
